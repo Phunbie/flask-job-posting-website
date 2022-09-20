@@ -21,19 +21,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="{{ url_for('views.home') }}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled">More jobs</a>
+              <a class="nav-link active" aria-current="page" href="{{ url_for('views.moreJobs') }}">More jobs</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Employer dashboard</a>
+              <a class="nav-link" href="{{ url_for('views.dashboard') }}">Employer dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Employer sign in</a>
+              <a class="nav-link" href="{{ url_for('auth.login') }}">Employer sign in</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled">Employer login</a>
+              <a class="nav-link" href="{{ url_for('auth.signup') }}">Employer sign up</a>
             </li>
           </ul>
         </div>
