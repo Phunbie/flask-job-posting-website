@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 #from flask_login import login_required,  current_user
 #from .models import Note
 #from .import db
@@ -15,6 +15,7 @@ def home():
 def moreJobs():
   return render_template("More-jobs.html")
 
-@views.route('/dashboard')
+@views.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
+  data = request.form
   return render_template("dashboard.html")
