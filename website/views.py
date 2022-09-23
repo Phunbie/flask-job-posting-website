@@ -9,11 +9,11 @@ views = Blueprint('views', __name__)
 @views.route('/home')
 @views.route('/')
 def home():
-  return render_template("home.html")
+  return render_template("home.html",user=current_user)
 
 @views.route('/more')
 def moreJobs():
-  return render_template("More-jobs.html")
+  return render_template("More-jobs.html", user=current_user)
 
 @views.route('/dashboard', methods=['GET', 'POST'])
 @login_required
@@ -37,4 +37,4 @@ def dashboard():
       db.session.commit()
       flash('New job added!', category='success')
       
-  return render_template("dashboard.html")
+  return render_template("dashboard.html", user=current_user)
