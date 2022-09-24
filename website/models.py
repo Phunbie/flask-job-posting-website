@@ -10,7 +10,7 @@ class Jobs(db.Model):
   details = db.Column(db.String(1000))
   date = db.Column(db.DateTime(timezone=True), default = func.now())
   employer_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
+  userlist = db.relationship('User')
   
 class User(db.Model,UserMixin):
   id = db.Column(db.Integer, primary_key=True)
@@ -18,3 +18,4 @@ class User(db.Model,UserMixin):
   password = db.Column(db.String(150))
   firstname = db.Column(db.String(150))
   joblist = db.relationship('Jobs')
+  jobid_id = db.Column(db.Integer, db.ForeignKey('jobs.id'))
