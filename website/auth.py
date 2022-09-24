@@ -57,8 +57,9 @@ def signup():
       new_user = User(email=email, firstname=firstname, password=generate_password_hash(password1, method='sha256'))
       db.session.add(new_user)
       db.session.commit()
-      flash('Welcome '+firstname, category='success')
+      user = User.query.filter_by(email=email).first()
       login_user(user, remember=True)
+      flash('Welcome!', category='success')
       return redirect(url_for('views.dashboard'))
   
     

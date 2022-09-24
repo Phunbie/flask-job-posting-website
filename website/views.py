@@ -21,6 +21,7 @@ def moreJobs():
 def dashboard():
   if request.method == 'POST':
     company = request.form.get('company')
+    email = request.form.get('email')
     job = request.form.get('job')
     location = request.form.get('location')
     details = request.form.get('details')
@@ -28,12 +29,14 @@ def dashboard():
       flash('Company name must be greater than 2 characters.',category='error')
     elif len(job) < 3:
       flash('Job position must be greater than 2 characters.',category='error')
+    elif len(email) < 3:
+      flash('email must be greater than 2 characters.',category='error')
     elif len(location) < 3:
       flash('Location must be greater than 2 characters.',category='error')
     elif len(details) < 3:
       flash('Location must be greater than 2 characters.',category='error')
     else:
-      new_job = Jobs(company=company, job=job, location=location, details=details, employer_id=current_user.id)
+      new_job = Jobs(company=company, email=email, job=job, location=location, details=details, employer_id=current_user.id)
       db.session.add(new_job)
       db.session.commit()
       flash('New job added!', category='success')
