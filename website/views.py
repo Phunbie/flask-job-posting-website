@@ -2,14 +2,15 @@ from flask import Blueprint, render_template, request, flash
 from flask_login import login_required,  current_user
 from .models import Jobs
 from .import db
+from .models import User
 #import json
-
 views = Blueprint('views', __name__)
 
 @views.route('/home')
 @views.route('/')
 def home():
-  return render_template("home.html",user=current_user)
+  job=Jobs.query.all()
+  return render_template("home.html", user=current_user, job=job)
 
 @views.route('/more')
 def moreJobs():
@@ -32,9 +33,10 @@ def dashboard():
     elif len(details) < 3:
       flash('Location must be greater than 2 characters.',category='error')
     else:
-      new_job = Jobs(company=company, job=job, location=location, details=details)
+      new_job = Jobs(company=company, job=job, location=location, details=details, employer_id=current_user.id)
       db.session.add(new_job)
       db.session.commit()
       flash('New job added!', category='success')
       
   return render_template("dashboard.html", user=current_user)
+  

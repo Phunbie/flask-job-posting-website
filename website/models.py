@@ -4,7 +4,7 @@ from sqlalchemy.sql import func
 
 class Jobs(db.Model):
   id = db.Column(db.Integer, primary_key=True)
-  company = db.Column(db.String(50), unique=True)
+  company = db.Column(db.String(50))
   job = db.Column(db.String(150))
   location = db.Column(db.String(150))
   details = db.Column(db.String(1000))
