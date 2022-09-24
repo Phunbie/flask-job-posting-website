@@ -4,18 +4,16 @@
         {{ jo.job }}
       </h4>
       <div>
-        <b>Location:</b>{{ jo.location }} 
+        <b>Location: </b>{{ jo.location }} 
       </div>
       <div>
-        <b>email:</b>{{ user.email }} 
+        <b>Company: </b>{{ jo.company }} 
       </div>
-      {% if "salary" in job %}
       <div>
-        <b>Salary:</b> 1000 
+        <b>Job description:</b> {{ jo.details }}
       </div>
-      {% endif %}
     </div>
    <div class="col-2 padding-right:16px">
-   <a href="mailto:adeneyeoluwafunbi@gmail.com?subject=Application%20for%20{{job['title']}}&body=My%20Name%3A%20%3Cyour%20name%20here%3E%0D%0A%0D%0AMy%20Resume%20link%3A%20%3Cresume%20link%3E%0D%0A%0D%0AMy%20LinkedIn%20link%3A%20%3CLinkedIn%20link%3E" type="button" class="btn btn-outline-primary float-right align-middle">Apply</a>
+   <a href="mailto:{{ jo.email }}?subject=Application%20for%20{{job['title']}}&body=My%20Name%3A%20%3Cyour%20name%20here%3E%0D%0A%0D%0AMy%20Resume%20link%3A%20%3Cresume%20link%3E%0D%0A%0D%0AMy%20LinkedIn%20link%3A%20%3CLinkedIn%20link%3E" type="button" class="btn btn-outline-primary float-right align-middle">Apply</a>
    </div>
   </div>

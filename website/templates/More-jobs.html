@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% block title %}More jobs{% endblock %}
 {% block body %}
-
+      <h2 class="text-center mt-2 mb-4">Open Positions</h2>
+      <div>
+        {% for jo in job1 %}
+          {% include "jobitem.html" %}
+        {% endfor %}
+      </div>
 {% endblock %}

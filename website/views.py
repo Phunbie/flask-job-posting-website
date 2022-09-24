@@ -10,11 +10,21 @@ views = Blueprint('views', __name__)
 @views.route('/')
 def home():
   job=Jobs.query.all()
-  return render_template("home.html", user=current_user, job=job)
+  job2=[]
+  for i,j in enumerate(job):
+    if i < 4:
+      job2.append(j)
+  job2=job2[::-1]
+  return render_template("home.html", user=current_user, job=job,job2=job2)
 
 @views.route('/more')
 def moreJobs():
-  return render_template("More-jobs.html", user=current_user)
+  job=Jobs.query.all()
+  job1=[]
+  for j in job:
+    job1.append(j)
+  job1=job1[::-1]
+  return render_template("More-jobs.html", user=current_user, job=job, job1=job1)
 
 @views.route('/dashboard', methods=['GET', 'POST'])
 @login_required

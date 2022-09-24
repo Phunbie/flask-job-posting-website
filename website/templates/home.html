@@ -15,9 +15,11 @@
       </div>
       <h2 class="text-center mt-2 mb-4">Open Positions</h2>
       <div>
-        
-        {% for jo in job %}
+        {% for jo in job2 %}
           {% include "jobitem.html" %}
         {% endfor %}
-
+      </div>
+      <div class="text-center">
+        <a class="btn btn-primary btn-lg" href="{{ url_for('views.moreJobs') }}">More jobs</a>
+    </div>
 {% endblock %}
