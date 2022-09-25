@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, flash, redirect
 from flask_login import login_required,  current_user
 from .models import Jobs
 from .import db
@@ -52,4 +52,16 @@ def dashboard():
       flash('New job added!', category='success')
       
   return render_template("dashboard.html", user=current_user)
+
+
+@views.route('/delete/<int:id>')
+def delete(id):
+    task_to_delete = Jobs.query.get_or_404(id)
+
+    try:
+        db.session.delete(task_to_delete)
+        db.session.commit()
+        return redirect("/dashboard")
+    except:
+        return 'There was a problem deleting that task'
   

@@ -57,4 +57,11 @@
   <br/>
   <button type="submit" class="btn btn-primary">Post job</button>
 </form>
+ <h2 class="text-center mt-2 mb-4">Posted Job</h2>
+      <div>
+        {% for jobl in user.joblist %}
+          {% include "privatejob.html" %}
+        {% endfor %}
+      </div>
+      
 {% endblock %}
