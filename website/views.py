@@ -54,7 +54,7 @@ def dashboard():
   return render_template("dashboard.html", user=current_user)
 
 
-@views.route('/delete/<int:id>')
+@views.route('/delete/<int:id>', methods=['DELETE'])
 def delete(id):
     task_to_delete = Jobs.query.get_or_404(id)
 
